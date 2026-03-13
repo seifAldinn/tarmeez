@@ -27,7 +27,7 @@ const inputs = [
 // DONE
 function showTasks(){
     document.getElementById("lines").innerHTML =" " 
-
+let index =0
 for (const input of inputs){
     console.log(input);
 document.getElementById("lines").innerHTML += 
@@ -35,13 +35,15 @@ document.getElementById("lines").innerHTML +=
                 <div class="left-btns">
                     <button>🖋️</button>
                     <button>✅</button>
-                    <button>🗑️</button>
+                    <button onclick= "deleteTask(${index})">🗑️</button>
                 </div>
                 <div class="right-text">
                     <h4 id="taskName">${input.title}</h4>
                     <p id="date">${input.date}</p>
                 </div>
             </div>`
+            index++
+            
 }
 }
 showTasks()
@@ -61,3 +63,10 @@ inputs.push(opj)
 
 showTasks()
 })
+
+
+
+function deleteTask(index){
+    inputs.splice(index,1)
+    showTasks()
+}
