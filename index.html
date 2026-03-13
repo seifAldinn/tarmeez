@@ -12,35 +12,63 @@
 </head>
 <body>
 
-    <h1>Product Manager</h1>
+    <main>
+        <div class="top">
+            <h2>Tasks</h2>
+            <button id="addBtn">+</button>
+        </div>
+        
+        <div class="hero-sec" id="lines">
+            <div class="line" id="line">
+                <div class="left-btns">
+                    <button>🖋️</button>
+                    <button>✅</button>
+                    <button>🗑️</button>
+                </div>
+                <div class="right-text">
+                    <h4 id="taskName">task1</h4>
+                    <p id="date">15/5/2028</p>
+                </div>
+            </div>
 
-<div class="input-group">
-    <input id="name" placeholder="Product name">
-    <input id="price" placeholder="Price">
-    <button class="add-btn" onclick="addProduct()">Add Product</button>
-</div>
+            <div class="line" id="line">
+                <div class="left-btns">
+                    <button>🖋️</button>
+                    <button>✅</button>
+                    <button>🗑️</button>
+                </div>
+                <div class="right-text">
+                    <h4>task2</h4>
+                    <p>15/5/2028</p>
+                </div>
+            </div>
 
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Price</th>
-<th>Actions</th>
-</tr>
-</thead>
+            <div class="line" id="line">
+                <div class="left-btns">
+                    <button>🖋️</button>
+                    <button>✅</button>
+                    <button>🗑️</button>
+                </div>
+                <div class="right-text">
+                    <h4>task3</h4>
+                    <p>15/5/2028</p>
+                </div>
+            </div>
 
-<tbody id="tableBody"></tbody>
-</table>
+            <div class="line" id="line">
+                <div class="left-btns">
+                    <button>🖋️</button>
+                    <button>✅</button>
+                    <button>🗑️</button>
+                </div>
+                <div class="right-text">
+                    <h4>task4</h4>
+                    <p>15/5/2028</p>
+                </div>
+            </div>
+        </div>
+    </main>
 
-<div id="editModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000;">
-    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:white; padding:20px; border-radius:8px; width:300px;">
-        <h3>Edit Product</h3>
-        <input id="editName" placeholder="Product name" style="width:100%; padding:8px; margin:10px 0;">
-        <input id="editPrice" placeholder="Price" style="width:100%; padding:8px; margin:10px 0;">
-        <button onclick="saveEdit()" style="margin-right:10px;">Save</button>
-        <button onclick="cancelEdit()">Cancel</button>
-    </div>
-</div>
 
 <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/7dba689698.js" crossorigin="anonymous"></script>
@@ -48,4 +76,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 
+    
+</body>
+</html>
 

@@ -1,111 +1,63 @@
-let products = JSON.parse(localStorage.getItem("products")) || [];
-let editingIndex = null;
 
-function addProduct(){
-    let name = document.getElementById("name").value.trim();
-    let price = document.getElementById("price").value.trim();
 
-    if (!name || !price) {
-        alert("Please fill in all fields!");
-        return;
-    }
+const now = new Date()
+const date = now.getDate() + "/" + (now.getMonth() + 1) + "/" + now.getFullYear() 
 
-    if (isNaN(price) || price <= 0) {
-        alert("Price must be a valid positive number!");
-        return;
-    }
+const inputs = [
+    // {
+    //     title: task ="unknown",
+    //     date: "15/5/2025",
+    //     isDone : false
+    // },
+    //  {
+    //     title: "aldin",
+    //     date: "15/5/2025",
+    //     isDone : false
+    // },
+    //  {
+    //     title: "osama",
+    //     date: "15/5/2025",
+    //     isDone : false
+    // }
+]
 
-    let product = {
-        name: name,
-        price: parseFloat(price)
-    };
 
-    products.push(product);
-    localStorage.setItem("products", JSON.stringify(products));
-    
-    document.getElementById("name").value = "";
-    document.getElementById("price").value = "";
-    
-    displayProducts();
+
+
+// DONE
+function showTasks(){
+    document.getElementById("lines").innerHTML =" " 
+
+for (const input of inputs){
+    console.log(input);
+document.getElementById("lines").innerHTML += 
+            `<div class="line">
+                <div class="left-btns">
+                    <button>🖋️</button>
+                    <button>✅</button>
+                    <button>🗑️</button>
+                </div>
+                <div class="right-text">
+                    <h4 id="taskName">${input.title}</h4>
+                    <p id="date">${input.date}</p>
+                </div>
+            </div>`
 }
-
-
-
-
-function displayProducts(){
-    let table = document.getElementById("tableBody");
-    table.innerHTML = "";
-
-    if (products.length === 0) {
-        table.innerHTML = '<tr><td colspan="3" style="text-align:center;">No products added yet</td></tr>';
-        return;
-    }
-
-    products.forEach((product, index) => {
-        table.innerHTML += `
-        <tr>
-            <td>${product.name}</td>
-            <td>$${product.price.toFixed(2)}</td>
-            <td>
-                <button onclick="editProduct(${index})" style="margin-right:5px; background-color:#ffc107; border:none; border-radius:4px; color:black;">Edit</button>
-                <button onclick="deleteProduct(${index})" style="background-color:#dc3545; border:none; border-radius:4px; color:white;">Delete</button>
-            </td>
-        </tr>
-        `;
-    });
 }
-
-displayProducts();
-
+showTasks()
 
 
 
+const addBtn = document.getElementById("addBtn")
 
-
-
-    if (confirm("Are you sure you want to delete this product?")) {
-        products.splice(index, 1);
-        localStorage.setItem("products", JSON.stringify(products));
-        displayProducts();
+addBtn.addEventListener("click",() =>{
+const task = prompt("Enter your task")
+const opj ={
+        title: task,
+        date: date,
+        isDone : false
     }
+inputs.push(opj)
 
-
-
-
-function editProduct(index){
-
-let newName = prompt("Enter new name");
-let newPrice = prompt("Enter new price");
-
-products[index].name = newName;
-    editingIndex = index;
-    document.getElementById("editName").value = products[index].name;
-    document.getElementById("editPrice").value = products[index].price;
-    document.getElementById("editModal").style.display = "block";
-}
-
-function saveEdit(){
-    let name = document.getElementById("editName").value.trim();
-    let price = document.getElementById("editPrice").value.trim();
-
-    if (!name || !price) {
-        alert("Please fill in all fields!");
-        return;
-    }
-
-    if (isNaN(price) || price <= 0) {
-        alert("Price must be a valid positive number!");
-        return;
-    }
-
-    products[editingIndex].name = name;
-    products[editingIndex].price = parseFloat(price);
-
-    localStorage.setItem("products", JSON.stringify(products));
-    displayProducts();
-    cancelEdit();
-}
-
-function cancelEdit(){
-    document.getElementById("editModal").style.display = "none";
-    editingIndex = null;}
+showTasks()
+})

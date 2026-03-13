@@ -1,93 +1,72 @@
-* {
-    margin: 0;
-    padding: 0;
+*{
+    margin: 0px;
+    padding: 0px;
     box-sizing: border-box;
 }
-
 body{
-    font-family: Arial, sans-serif;
-    padding: 40px;
-    background-color: #f5f5f5;
+    background: linear-gradient(to left, magenta, rgb(255, 0, 89),white);
 }
-
-h1 {
-    color: #333;
-    margin-bottom: 30px;
+main{
+    width: 80%;
+    margin: 3% auto;
     text-align: center;
+    background-color:rgba(255, 255, 255, 0.3) ;
+    padding: 20px;
 }
-
-.input-group {
+.top{
     display: flex;
-    gap: 10px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: blueviolet
 }
-
-input {
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    flex: 1;
-    min-width: 150px;
+.top h2{
+  width: 99%;
 }
-
-input:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+.top button{
+padding: 15px 30px;
+background-color:rgba(255, 255, 255, 0.3) ;
+font-size: 30px;
 }
-
-button {
-    padding: 12px 20px;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    opacity: 0.9;
-}
-
-.add-btn {
-    background-color: #28a745;
-    color: white;
-}
-
-.add-btn:hover {
-    background-color: #218838;
-}
-
-table {
-    margin-top: 30px;
-    border-collapse: collapse;
-    width: 100%;
-    max-width: 800px;
+.hero-sec{
     background-color: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    border-radius: 4px;
-    overflow: hidden;
+    width: 100%;
 }
-
-td, th {
-    border: 1px solid #ddd;
-    padding: 15px;
-    text-align: left;
+.line{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 2px solid black;
 }
+.left-btns{
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+    
+    :nth-child(1){
+        background-color: grey;
+    }
+    :nth-child(2){
+        background-color: green;
+    }
+    :nth-child(3){
+        background-color: red;
+    }
 
-th {
-    background-color: #007bff;
+button{
+    padding: 10px 20px;
+    background-color: blueviolet;
     color: white;
-    font-weight: bold;
 }
-
-tr:hover {
-    background-color: #f9f9f9;
 }
-
-tr:nth-child(even) {
-    background-color: #f9f9f9;
+.right-text{
+    width: 50%;
+    text-align: right;
+    padding: 5px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    h4{
+        font-size: 25px;
+    }
 }
