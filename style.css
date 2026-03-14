@@ -46,8 +46,11 @@ font-size: 30px;
     :nth-child(1){
         background-color: grey;
     }
-    :nth-child(2){
+    .done-btn{
         background-color: green;
+    }
+    .redo-btn{
+        background-color: gray;
     }
     :nth-child(3){
         background-color: red;
@@ -69,4 +72,19 @@ button{
     h4{
         font-size: 25px;
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+.done{
+    background-color: lightgreen;
+    border: 3px solid green;
 }

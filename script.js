@@ -21,9 +21,6 @@ const inputs = [
     // }
 ]
 
-
-
-
 // DONE
 function showTasks(){
     document.getElementById("lines").innerHTML =" " 
@@ -31,10 +28,13 @@ let index =0
 for (const input of inputs){
     console.log(input);
 document.getElementById("lines").innerHTML += 
-            `<div class="line">
+            `<div class="line ${input.isDone ? 'done' : ''}" id="${index}">
                 <div class="left-btns">
-                    <button>🖋️</button>
-                    <button>✅</button>
+                    <button onclick="editTask(${index})">🖋️</button>
+                     ${inputs[index].isDone == false ? `<button id="doneBtn" class="done-btn" onclick = "markAsDone(${index})">✅</button>` :
+                      `<button id="doneBtn" class="redo-btn" onclick = "markAsDone(${index})">❌</button>`}
+
+
                     <button onclick= "deleteTask(${index})">🗑️</button>
                 </div>
                 <div class="right-text">
@@ -45,15 +45,21 @@ document.getElementById("lines").innerHTML +=
             index++
             
 }
+
 }
 showTasks()
 
 
 
 const addBtn = document.getElementById("addBtn")
-
 addBtn.addEventListener("click",() =>{
-const task = prompt("Enter your task")
+    let task
+
+
+    do{
+         task = prompt("Enter your task")
+    }while(task === "" ||task === null)
+
 const opj ={
         title: task,
         date: date,
@@ -69,4 +75,37 @@ showTasks()
 function deleteTask(index){
     inputs.splice(index,1)
     showTasks()
+}
+
+
+
+function editTask(index){
+    let newTiltle
+ do{
+        newTiltle = prompt("enter new title for" ,inputs[index].title)
+    }while(newTiltle === "" ||newTiltle === null)
+
+
+inputs[index].title = newTiltle
+    showTasks()
+
+}
+
+function markAsDone(index){
+    let lineID = document.getElementById(index)
+    let doneBtn = document.getElementById("doneBtn")
+   if(inputs[index].isDone){
+        inputs[index].isDone = false
+        lineID.classList.remove("done")
+        doneBtn.classList.add("redo-btn")
+
+   }else if(!inputs[index].isDone){
+        inputs[index].isDone = true
+           lineID.classList.add("done")
+           doneBtn.classList.remove("redo-btn")
+
+   }
+   
+    showTasks()  
+// console.log(lineID)
 }
