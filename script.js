@@ -1,9 +1,9 @@
 
 
 const now = new Date()
-const date = now.getDate() + "/" + (now.getMonth() + 1) + "/" + now.getFullYear() 
+const date = now.getHours() + ":" + now.getMinutes() + " | " + now.getDate() + "/" + (now.getMonth() + 1) + "/" + now.getFullYear() 
 
-const inputs = [
+let inputs = [
     // {
     //     title: task ="unknown",
     //     date: "15/5/2025",
@@ -17,9 +17,12 @@ const inputs = [
     //  {
     //     title: "osama",
     //     date: "15/5/2025",
-    //     isDone : false
+    //     isDone : true
     // }
 ]
+ setInLoaclStorage()
+
+
 
 // DONE
 function showTasks(){
@@ -65,15 +68,16 @@ const opj ={
         date: date,
         isDone : false
     }
-inputs.push(opj)
-
-showTasks()
+inputs.push(opj);
+getFromLoacalStorage();
+showTasks();
 })
 
 
 
 function deleteTask(index){
     inputs.splice(index,1)
+    getFromLoacalStorage()
     showTasks()
 }
 
@@ -87,6 +91,7 @@ function editTask(index){
 
 
 inputs[index].title = newTiltle
+    getFromLoacalStorage()
     showTasks()
 
 }
@@ -105,7 +110,23 @@ function markAsDone(index){
            doneBtn.classList.remove("redo-btn")
 
    }
-   
+    getFromLoacalStorage()
     showTasks()  
 // console.log(lineID)
+}
+
+
+
+
+// ****================localStorage==================****
+
+function setInLoaclStorage(){
+    let localData = JSON.parse(localStorage.getItem("task"))
+if(localData != null || localData != undefined){
+    inputs = localData 
+}}
+
+function getFromLoacalStorage(){
+    localStorage.setItem("task", JSON.stringify(inputs));
+
 }
