@@ -1,7 +1,5 @@
 
 
-const now = new Date()
-const date = now.getHours() + ":" + now.getMinutes() + " | " + now.getDate() + "/" + (now.getMonth() + 1) + "/" + now.getFullYear() 
 
 let inputs = [
     // {
@@ -56,6 +54,11 @@ showTasks()
 
 const addBtn = document.getElementById("addBtn")
 addBtn.addEventListener("click",() =>{
+
+    const now = new Date()
+    const date = now.getHours() + ":" + now.getMinutes() + " | " + now.getDate() + "/" + (now.getMonth() + 1) + "/" + now.getFullYear() 
+
+
     let task
 
 
@@ -122,7 +125,7 @@ function markAsDone(index){
 
 function setInLoaclStorage(){
     let localData = JSON.parse(localStorage.getItem("task"))
-if(localData != null || localData != undefined){
+if(localData !== null){
     inputs = localData 
 }}
 
