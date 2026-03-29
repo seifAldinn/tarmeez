@@ -28,15 +28,15 @@ function showTasks(){
 let index =0
 for (const input of inputs){
     console.log(input);
-document.getElementById("lines").innerHTML += 
+    const statusBtn = input.isDone
+        ? `<button class="redo-btn" onclick="markAsDone(${index})"><i class="fa-solid fa-rotate-left"></i></button>`
+        : `<button class="done-btn" onclick="markAsDone(${index})"><i class="fa-solid fa-check"></i></button>`;
+    document.getElementById("lines").innerHTML += 
             `<div class="line ${input.isDone ? 'done' : ''}" id="${index}">
                 <div class="left-btns">
-                    <button onclick="editTask(${index})">🖋️</button>
-                     ${inputs[index].isDone == false ? `<button id="doneBtn" class="done-btn" onclick = "markAsDone(${index})">✅</button>` :
-                      `<button id="doneBtn" class="redo-btn" onclick = "markAsDone(${index})">❌</button>`}
-
-
-                    <button onclick= "deleteTask(${index})">🗑️</button>
+                    <button class="edit-btn" onclick="editTask(${index})"><i class="fa-solid fa-pen"></i></button>
+                    ${statusBtn}
+                    <button class="del-btn" onclick="deleteTask(${index})"><i class="fa-solid fa-trash"></i></button>
                 </div>
                 <div class="right-text">
                     <h4 id="taskName">${input.title}</h4>
@@ -100,22 +100,9 @@ inputs[index].title = newTiltle
 }
 
 function markAsDone(index){
-    let lineID = document.getElementById(index)
-    let doneBtn = document.getElementById("doneBtn")
-   if(inputs[index].isDone){
-        inputs[index].isDone = false
-        lineID.classList.remove("done")
-        doneBtn.classList.add("redo-btn")
-
-   }else if(!inputs[index].isDone){
-        inputs[index].isDone = true
-           lineID.classList.add("done")
-           doneBtn.classList.remove("redo-btn")
-
-   }
+    inputs[index].isDone = !inputs[index].isDone
     getFromLoacalStorage()
-    showTasks()  
-// console.log(lineID)
+    showTasks()
 }
 
 
